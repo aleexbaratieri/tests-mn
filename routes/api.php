@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('', function() {
+    return response()->json(['msg' => 'Welcome!']);
+});
+
 Route::apiResource('users', UserController::class);
 Route::apiResource('addresses', AddressController::class);
 Route::apiResource('cities', CityController::class);
