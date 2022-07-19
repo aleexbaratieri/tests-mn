@@ -1,0 +1,9 @@
+GET http://localhost:8989/api/addresses
+Accept: application/json
+
+#######
+
+GET http://localhost:8989/api/addresses/255
+Accept: application/json
+
+#######
