@@ -4,7 +4,7 @@
 ### Passo a passo
 Clone Repositório
 ```sh
-git clone https://github.com/aleexbaratieri/tests/mn laravel
+git clone git@github.com:aleexbaratieri/tests-mn.git laravel
 ```
 
 ```sh
