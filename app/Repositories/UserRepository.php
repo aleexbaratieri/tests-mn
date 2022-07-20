@@ -21,7 +21,7 @@ class UserRepository extends Repository implements Crud
                 $this->entity = $this->applyFilter($filter, $value);
             }
         }
-        
+
         return $this->entity->get();
     }
 
@@ -38,7 +38,7 @@ class UserRepository extends Repository implements Crud
         if($type === 'state') {
             return $this->entity->whereHas('address.city', function($query) use ($value) {
                 return $query->whereHas('state', function($query) use($value){
-                    return $query->orWhere('uf', $value)->orWhere('state', $value);
+                    return $query->Where('uf', $value)->orWhere('state', $value);
                 });
             });
         }
