@@ -44,3 +44,12 @@ php artisan migrate --seed
 
 Acesse o projeto
 [http://localhost:8989/api/](http://localhost:8989/api/)
+
+
+Rodar testes
+```sh
+touch database/database.sqlite
+```
+```sh
+php artisan test
+```
