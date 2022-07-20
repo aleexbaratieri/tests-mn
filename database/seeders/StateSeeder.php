@@ -5,8 +5,6 @@ namespace Database\Seeders;
 use App\Models\State;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
 
 class StateSeeder extends Seeder
 {
@@ -17,13 +15,9 @@ class StateSeeder extends Seeder
      */
     public function run()
     {
-        $states = Http::get('https://servicodados.ibge.gov.br/api/v1/localidades/estados', [
-            'orderBy' => 'nome'
-        ]);
+        $states = json_decode(file_get_contents(storage_path('data/states.json')), true);
 
-        $data = $states->json();
-
-        foreach($data as $state) {
+        foreach($states as $state) {
             State::updateOrCreate([
                 'state' => $state['nome'],
                 'uf' => $state['sigla']
