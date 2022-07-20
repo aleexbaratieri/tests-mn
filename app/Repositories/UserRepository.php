@@ -30,7 +30,7 @@ class UserRepository extends Repository implements Crud
         if($type === 'city') {
             return $this->entity->whereHas('address', function($query) use ($value) {
                 return $query->whereHas('city', function($query) use ($value){
-                    return $query->whereRaw("UPPER(city) LIKE '%". strtoupper($value)."%'");
+                    return $query->whereRaw("UPPER(city) = '". strtoupper($value)."'");
                 });
             });
         }
@@ -38,7 +38,7 @@ class UserRepository extends Repository implements Crud
         if($type === 'state') {
             return $this->entity->whereHas('address.city', function($query) use ($value) {
                 return $query->whereHas('state', function($query) use($value){
-                    return $query->Where('uf', strtoupper($value))->orWhereRaw("UPPER(state) LIKE '%". strtoupper($value)."%'");
+                    return $query->Where('uf', strtoupper($value))->orWhereRaw("UPPER(state) = '". strtoupper($value)."'");
                 });
             });
         }
